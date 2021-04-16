@@ -23,20 +23,22 @@ public class Turret_Controller : MonoBehaviour
         if(Vector3.Distance(player.transform.position, vehicle.transform.position) >= 2)
         {
               turretTranform.LookAt(vehicle.transform.position);
-            Instantiate(proj, projSpawn.transform.position, Quaternion.identity); 
         }
         else
         {
             turretTranform.transform.position = new Vector3(0, 0.008475996f, 0);
+            return; 
         }
 
-        if(Vector3.Distance(player.transform.position, transform.position) <= tP.range)
-        {
-            tP.isInRange = true; 
-        }
-        else if (Vector3.Distance(player.transform.position, transform.position) > tP.range)
-        {
-            tP.isInRange = false;
-        }
+        //if(Vector3.Distance(player.transform.position, transform.position) <= tP.range)
+        //{
+        //    tP.isInRange = true; 
+        // Instantiate(proj, projSpawn.transform.position, Quaternion.identity); 
+        //}
+        //else if (Vector3.Distance(player.transform.position, transform.position) > tP.range)
+        //{
+        //    tP.isInRange = false;
+        //    return; 
+        //}
     }
 }

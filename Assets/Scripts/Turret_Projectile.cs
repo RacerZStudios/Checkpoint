@@ -8,7 +8,6 @@ public class Turret_Projectile : MonoBehaviour
     public float projectileSpeed;
     public float range = 5;
     public bool isInRange;
-    [SerializeField] public Turret_Controller tC; 
 
     private void Start()
     {
@@ -17,9 +16,9 @@ public class Turret_Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isInRange == true && range < 5)
-        {
-            rb.AddForce(transform.forward * projectileSpeed * Time.deltaTime);
-        }
+        //if(isInRange == true && range < 5)
+        //{
+        //    rb.AddForce(transform.forward * projectileSpeed * Time.deltaTime);
+        //}
     }
 }
