@@ -5,17 +5,22 @@ using UnityEngine;
 public class FireProjectile : MonoBehaviour
 {
     public Transform projectileTransformPos; 
-    public GameObject projectilePrefab; 
+    public GameObject projectilePrefab;
+    public bool isFiring; 
 
     public void FireTheProjectile()
     {
-        Instantiate(projectilePrefab, projectileTransformPos.transform.position, Quaternion.identity);
+        if (isFiring == true)
+        {
+            Instantiate(projectilePrefab, projectileTransformPos.transform.position, Quaternion.identity);
+        }
     }
 
     private void Update()
     {
-        if(Input.GetButtonDown("Fire"))
+        if(Input.GetButtonUp("Fire1"))
         {
+            isFiring = true;
             FireTheProjectile(); 
         }
     }
