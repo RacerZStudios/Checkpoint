@@ -16,9 +16,9 @@ public class Turret_Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if(isInRange == true && range < 5)
-        //{
-        //    rb.AddForce(transform.forward * projectileSpeed * Time.deltaTime);
-        //}
+        if (isInRange == true && range < 5)
+        {
+            rb.AddForce(transform.forward * projectileSpeed * Time.deltaTime);
+        }
     }
 }
