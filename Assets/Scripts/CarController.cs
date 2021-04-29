@@ -12,7 +12,7 @@ public class CarController : MonoBehaviour
     [SerializeField] public ParticleSystem rightParticleSystem;
     [SerializeField] public ParticleSystem leftParticleSystem;
 
-    private void Update()
+    private void FixedUpdate()
     {
         camera.transform.LookAt(cameraTransform.position);
         camera.transform.position = cameraTransform.position;

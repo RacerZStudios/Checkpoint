@@ -2096,6 +2096,14 @@ PrefabInstance:
       propertyPath: vehicle
       value: 
       objectReference: {fileID: 439765558}
+    - target: {fileID: 125042766924676225, guid: da67afabd6e9617489317e86d26b636c, type: 3}
+      propertyPath: tC.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125042766924676225, guid: da67afabd6e9617489317e86d26b636c, type: 3}
+      propertyPath: tC.Array.data[0]
+      value: 
+      objectReference: {fileID: 7924057529666604101}
     - target: {fileID: 125042767079667365, guid: da67afabd6e9617489317e86d26b636c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2226,3 +2234,14 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6329158148709259305, guid: 07a3597d796ed6a42a07e8922bbdd29b, type: 3}
+--- !u!114 &7924057529666604101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 125042766924676225, guid: da67afabd6e9617489317e86d26b636c, type: 3}
+  m_PrefabInstance: {fileID: 559894238636897339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924057529666604096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23efd80df3d96c347a963ac0b0b4dcc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
