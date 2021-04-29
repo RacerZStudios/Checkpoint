@@ -5,7 +5,7 @@ using UnityEngine;
 public class Turret_Projectile : MonoBehaviour
 {
     private Rigidbody rb;
-    public float projectileSpeed;
+    public float projectileSpeed = 5;
     public float range = 5;
     public bool isInRange;
 
@@ -16,9 +16,11 @@ public class Turret_Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isInRange == true && range < 5)
+        if (isInRange == true)
         {
-            rb.AddForce(transform.forward * projectileSpeed * Time.deltaTime);
+            rb.AddForce(-Vector3.forward * projectileSpeed * 500 * Time.deltaTime);
         }
+
+        Destroy(gameObject, 2); 
     }
 }

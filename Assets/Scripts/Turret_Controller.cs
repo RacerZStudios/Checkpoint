@@ -9,7 +9,18 @@ public class Turret_Controller : MonoBehaviour
     public GameObject player;
     public Transform projSpawn;
     public GameObject proj;
+    public float distanceFromPlayer;
+    public float coolDown;
+    private const int spawnDist = 5; 
     [SerializeField] Turret_Projectile tP;
+
+    private void Awake()
+    {
+        if (player != null)
+        {
+            player = GameObject.Find("PlayerController");
+        }
+    }
 
     private void Start()
     {
@@ -17,50 +28,49 @@ public class Turret_Controller : MonoBehaviour
         vehicle = vehicle.transform.gameObject;
         player = player.transform.gameObject;
 
-        while (player != null)
-        {
-            if (tP.isInRange == true)
-            {
-                StartCoroutine(FireAtTarget()); // fires once because on Start 
-            }
-            break;
-        }
+        coolDown = 5;
     }
 
     private void Update()
     {
-        if (Vector3.Distance(player.transform.position, vehicle.transform.position) >= 2)
+        coolDown -= Time.deltaTime;
+        if (player != null)
         {
-            turretTranform.LookAt(vehicle.transform.position);
-            tP.isInRange = true;
-        }
-        else
-        {
-            turretTranform.transform.position = new Vector3(0, 0.008475996f, 0);
-            return;
+            distanceFromPlayer = Vector3.Distance(player.transform.position, turretTranform.gameObject.transform.position); 
+            if(distanceFromPlayer >= 25)
+            {
+                StartCoroutine(FireAtTarget()); 
+            }
         }
 
-        if (tP.isInRange == true)
+        if(player == null)
         {
-            StartCoroutine(FireAtTarget()); 
+            StopCoroutine(FireAtTarget());
+            return; 
         }
     }
 
     private IEnumerator FireAtTarget()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) >= tP.range)
+        turretTranform.LookAt(player.transform.position);
+        if(coolDown <= 0)
         {
+            proj.SetActive(true); 
             tP.isInRange = true;
-            yield return new WaitForSeconds(2); 
-            Instantiate(proj, projSpawn.transform.position, projSpawn.transform.rotation);
-            proj.transform.LookAt(player.transform);
-            proj.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 4); 
+            yield return new WaitForSeconds(5);
+            if(proj != null)
+            {
+                Instantiate(proj, proj.transform.position + spawnDist * proj.transform.forward, proj.transform.rotation);
+                proj.transform.LookAt(player.transform);
+                proj.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 4);
+            }
+           
+            coolDown = 5;
         }
-        else if (Vector3.Distance(player.transform.position, transform.position) < tP.range)
+
+        if(coolDown < 0)
         {
-            tP.isInRange = false;
-            proj.gameObject.SetActive(false); 
-            yield return null;
+            coolDown = 5;
         }
     }
-}
+ }
