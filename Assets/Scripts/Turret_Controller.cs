@@ -37,10 +37,11 @@ public class Turret_Controller : MonoBehaviour
         if (player != null)
         {
             distanceFromPlayer = Vector3.Distance(player.transform.position, turretTranform.gameObject.transform.position); 
-            if(distanceFromPlayer >= 25)
+            if(distanceFromPlayer <= 25)
             {
                 StartCoroutine(FireAtTarget()); 
             }
+            return; 
         }
 
         if(player == null)
@@ -53,7 +54,7 @@ public class Turret_Controller : MonoBehaviour
     private IEnumerator FireAtTarget()
     {
         turretTranform.LookAt(player.transform.position);
-        if(coolDown <= 0)
+        if(coolDown <= 0 && distanceFromPlayer <= 25)
         {
             proj.SetActive(true); 
             tP.isInRange = true;
