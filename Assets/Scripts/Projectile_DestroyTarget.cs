@@ -27,5 +27,6 @@ public class Projectile_DestroyTarget : MonoBehaviour
                 return;
             }
         }
+        turretGone = false; 
     }
 }
