@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class FlagTrigger_Confirm : MonoBehaviour
 {
-    public GameObject flag;
+    public GameObject []flag;
     private static int score; 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Flag_Trigger")
+        if(other.gameObject.name == "Flag_Trigger" && flag[0].gameObject.name == "Flag_01")
         {
-            flag.gameObject.SetActive(false);
+            flag[0].gameObject.SetActive(false);
             score += 1;
-            Debug.Log(score); 
+            Debug.Log(score);
+            return; 
         }
     }
 }

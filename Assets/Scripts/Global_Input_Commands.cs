@@ -6,6 +6,7 @@ public class Global_Input_Commands : MonoBehaviour
 {
     [SerializeField] public GameObject WASDTextObject;
     [SerializeField] public GameObject FToDriveTextObject;
+    [SerializeField] public GameObject ArrowKeyFExitTextObject; 
     [SerializeField] public DriveTrigger player; 
 
     public InputCommand inputCommand = InputCommand.Begin; 
@@ -14,7 +15,7 @@ public class Global_Input_Commands : MonoBehaviour
         Begin
     }
 
-    public bool w, a, s, d, f; 
+    public bool w, a, s, d, f, uA,dA,lA,rA;  
     void Update()
     {
         if (gameObject != null)
@@ -41,6 +42,22 @@ public class Global_Input_Commands : MonoBehaviour
                 {
                     f = true;
                 }
+                if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.F))
+                {
+                    uA = true;
+                }
+                if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.F))
+                {
+                    lA = true;
+                }
+                if (Input.GetKey(KeyCode.RightArrow) && Input.GetKeyDown(KeyCode.F))
+                {
+                    rA = true;
+                }
+                if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.F))
+                {
+                    dA = true;
+                }
             }
         }
 
@@ -48,7 +65,15 @@ public class Global_Input_Commands : MonoBehaviour
         StartCoroutine(DestroyWASDText());
 
         if (f.Equals(true))
-        StartCoroutine(DestroyFToDriveText()); 
+            if(ArrowKeyFExitTextObject != null)
+            {
+                ArrowKeyFExitTextObject.SetActive(true);
+                StartCoroutine(DestroyFToDriveText());
+                return;
+            }
+
+        if (uA.Equals(true) || lA.Equals(true) || rA.Equals(true) || dA.Equals(true))
+        StartCoroutine(DestroyArrowKeyFExitText());
     }
 
     IEnumerator DestroyWASDText()
@@ -77,6 +102,27 @@ public class Global_Input_Commands : MonoBehaviour
             time = 0;
             f = false; 
             Destroy(FToDriveTextObject);
+        }
+
+        time = 0;
+        yield return null;
+    }
+
+    IEnumerator DestroyArrowKeyFExitText()
+    {
+        float time = 5;
+        time -= Time.time;
+        Debug.Log(time);
+        if (time <= 0)
+        {
+            time = 0;
+            uA = false; lA = false; rA = false; dA = false;
+            if(ArrowKeyFExitTextObject != null)
+            {
+                ArrowKeyFExitTextObject.SetActive(false);
+                yield return null; 
+            }
+            Destroy(ArrowKeyFExitTextObject);
         }
 
         time = 0;

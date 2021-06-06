@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CehckForNullObjects : MonoBehaviour
 {
-    [SerializeField] public Projectile_DestroyTarget pT;
-    [SerializeField] public GameObject flagShield; 
+    [SerializeField] public Projectile_DestroyTarget []pT;
+    [SerializeField] public GameObject []flagShield; 
 
     private void Update()
     {
-        if(pT == null || pT.turretGone == true)
+        if(pT[0] == null || pT[0].turretGone == true)
         {
-            flagShield.gameObject.SetActive(false);
+            flagShield[0].gameObject.SetActive(false);
             return; 
         }
     }
