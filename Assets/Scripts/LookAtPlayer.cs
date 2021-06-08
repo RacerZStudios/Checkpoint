@@ -8,6 +8,7 @@ public class LookAtPlayer : MonoBehaviour
 
     private void Update()
     {
+        if (player == null) return; 
         transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z); 
     }
 }

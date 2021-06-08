@@ -15,9 +15,9 @@ public class ProjectileFiring : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Input.GetButton("Fire1"))
+        if(Input.GetButtonDown("Fire1"))
         {
-            rb.AddForce(transform.forward * projectileSpeed * Time.deltaTime);
+            rb.AddForce(transform.forward * projectileSpeed * Time.deltaTime);         
         }
 
         fP.isFiring = false; 

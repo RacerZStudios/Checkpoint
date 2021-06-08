@@ -9,10 +9,13 @@ public class CehckForNullObjects : MonoBehaviour
 
     private void Update()
     {
-        if(pT[0] == null || pT[0].turretGone == true)
+        if (pT[0] == null || pT[0].turret1Gone == true)
         {
             flagShield[0].gameObject.SetActive(false);
-            return; 
+        }
+        if (pT[1] == null || pT[1].turret2Gone == true && pT[2] == null || pT[2].turret3Gone == true)
+        {
+            flagShield[1].gameObject.SetActive(false);
         }
     }
 }

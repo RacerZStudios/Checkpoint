@@ -62,8 +62,12 @@ public class Turret_Controller : MonoBehaviour
             if(proj != null)
             {
                 Instantiate(proj, proj.transform.position + spawnDist * proj.transform.forward, proj.transform.rotation);
-                proj.transform.LookAt(player.transform);
-                proj.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 4);
+                if(player != null)
+                {
+                    proj.transform.LookAt(player.transform);
+                    proj.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 4);
+                    yield return null;
+                }
             }
            
             coolDown = 5;
@@ -74,4 +78,4 @@ public class Turret_Controller : MonoBehaviour
             coolDown = 5;
         }
     }
- }
+}
