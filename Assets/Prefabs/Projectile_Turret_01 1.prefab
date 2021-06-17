@@ -28,8 +28,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3219928594773641432}
-  m_LocalRotation: {x: -0.0017954384, y: 0.99818367, z: -0.045689404, w: -0.039225224}
-  m_LocalPosition: {x: 159.05043, y: 3.6254482, z: 142.25757}
+  m_LocalRotation: {x: 0.01346428, y: 0.9838768, z: -0.084288895, w: 0.15716419}
+  m_LocalPosition: {x: -78.46071, y: 3.823558, z: 135.2943}
   m_LocalScale: {x: 44, y: 44, z: 44}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   projectileSpeed: 5
   range: 5
   isInRange: 1
-  player: {fileID: 1695165081797351815, guid: fea19ea2ccf842b42ae446b71c0da4c5, type: 3}
+  player: {fileID: 1504003954227172, guid: d8c56c1e0b06d0148b9f5b1b24a0cf35, type: 3}
 --- !u!54 &5523397941597098599
 Rigidbody:
   m_ObjectHideFlags: 0

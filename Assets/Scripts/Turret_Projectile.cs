@@ -12,18 +12,16 @@ public class Turret_Projectile : MonoBehaviour
 
     private void Start()
     {
-        if(player == null)
+        if(player != null)
         {
-            player = GameObject.Find("PlayerController").GetComponent<GameObject>();
+            player = GetComponent<GameObject>();
+        }
+        else if(player == null)
+        {
+            Debug.LogError("No PlayerController" 
+            + "has been assigned in the inspector"); 
         }
         rb = GetComponent<Rigidbody>();
-    }
-    private void Update()
-    {
-        if (player != null)
-        {
-            return; 
-        }
     }
 
     private void FixedUpdate()
